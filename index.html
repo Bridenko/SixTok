@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Home</title>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+	<link rel="icon" sizes="144x144" href="./files/favicon/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="./files/favicon/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="./files/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="./files/favicon/favicon-16x16.png">
+	<link rel="manifest" href="./files/favicon/site.webmanifest">
+	<link rel="mask-icon" href="./files/favicon/safari-pinned-tab.svg" color="#5bbad5">
+	<meta name="msapplication-TileColor" content="#2b5797">
+	<meta name="theme-color" content="#000000">
+
+	<link rel="stylesheet" href="./files/swiper-bundle.min.css?_v=20230302204643">
+	<link rel="stylesheet" href="./css/style.min.css?_v=20230302204643">
+
+</head>
+
+<body>
+	<script src="https://cdn.jsdelivr.net/npm/hls.js@latest?_v=20230302204643"></script>
+	<main class="main">
+		<div class="main-container">
+			<div class="header">
+				<div class="header-wrapper">
+					<a class="main-logo" href="./index.html">
+						<picture><source srcset="./img/logo.webp" type="image/webp"><img src="./img/logo.png" alt=""></picture>
+					</a>
+
+				</div>
+			</div>
+			<div class="swipe-message">
+				<picture><source srcset="./img/arrow.webp" type="image/webp"><img class="swipe-message__icon" src="./img/arrow.png" alt=""></picture>
+				<span class="swipe-message__text">Swipe</span>
+				<picture><source srcset="./img/arrow.webp" type="image/webp"><img class="swipe-message__icon custom" src="./img/arrow.png" alt=""></picture>
+			</div>
+			<div class="swiper vertical-slider">
+				<div class="swiper-wrapper"></div>
+			</div>
+		</div>
+	</main>
+
+	<script src="./files/swiper-bundle.min.js?_v=20230302204643"></script>
+	<script src="./js/app.min.js?_v=20230302204643"></script>
+	<!-- <script>
+		document.addEventListener('DOMContentLoaded', function () {
+			checkInnerHeight();
+			showSlider();
+			pauseAllVideos();
+			playVideoOnActiveSlide();
+			hideSwipeMessageAutomatic();
+			tooglePopup();
+			followingToModel();
+			toggleMoreButton();
+		});
+
+		let videosData = [{
+				name: 'Katya',
+				age: '19',
+				videoLink: 'https://edge-hls.doppiocdn.org/hls/23938902/master/23938902.m3u8',
+				avatar: 'https://static-cdn.strpst.com/avatars/0/1/5/01526b55cb853fb535d67c5d814b6cae-full',
+			},
+			{
+				name: 'Katya',
+				age: '20',
+				videoLink: 'https://edge-hls.doppiocdn.org/hls/23938902/master/23938902.m3u8',
+				avatar: 'https://static-cdn.strpst.com/avatars/0/1/5/01526b55cb853fb535d67c5d814b6cae-full',
+			},
+			{
+				name: 'Katya',
+				age: '21',
+				videoLink: 'https://edge-hls.doppiocdn.org/hls/23938902/master/23938902.m3u8',
+				avatar: 'https://static-cdn.strpst.com/avatars/0/1/5/01526b55cb853fb535d67c5d814b6cae-full',
+			},
+		];
+
+		videosData.forEach((model) => {
+			model.name;
+			model.age;
+			model.videoLink;
+			model.avatar;
+		});
+
+		let booleanSoundCheck = false;
+
+		function showSlider() {
+			let appendNumber = 3;
+			let prependNumber = 0;
+
+			const swiper = new Swiper('.swiper', {
+				direction: "vertical",
+				slidesPerView: 1,
+				centeredSlides: true,
+				spaceBetween: 0,
+				initialSlide: 1,
+				mousewheel: true,
+				speed: 300,
+				updateInterval: 500,
+				threshold: 30,
+
+				touchEventsTarget: 'wrapper',
+				// touchRatio: 1,
+
+				virtual: {
+					slides: (function () {
+						const slides = [];
+						for (var i = 0; i < 3; i += 1) {
+							slides.push(`
+								<div class="card">
+									<div class="card-visual">
+										<video class="card-visual__video" muted preload="auto" playsinline>
+											<source class="stream-url" src="https://edge-hls.doppiocdn.com/hls/102844835/master/102844835_480p.m3u8"
+												type="video/m3u8">
+										</video>
+										<div class="card-buttons">
+											<button class="avatar add-popup" type="button">
+												<picture><source srcset="./img/avatar.webp" type="image/webp"><img src="./img/avatar.png" alt=""></picture>
+												<i class="default-logo icon-man"></i>
+												<span class="status">Live</span>
+											</button>
+											<button class="card-button main-like-btn" type="button">
+												<i class="icon icon-like"></i>
+												<span class="text">1.2M</span>
+											</button>
+											<button class="sound-button" type="button">
+												<i class="icon icon-sound-off"></i>
+											</button>
+										</div>
+										<div class="card-info">
+											<div class="chat-link">
+												<div class="chat-link__line"></div>
+												<div class="chat-link__text"><span>Tap to chat</span><i class="icon icon-comment"></i></div>
+												<div class="chat-link__line"></div>
+											</div>
+											<div class="card-info__name">
+												<i class="icon-verify"></i>
+												<span class="mark">@BelindaWhite </span>
+												<span class="text">‘19</span>
+												<button class="button main-following-button" data-follow-text="Follow"
+													data-following-text="Following">Follow</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							`);
+						}
+						return slides;
+					})(),
+				},
+			});
+
+			// Slide down
+			swiper.on('slideNextTransitionEnd', function (e) {
+
+				// const slideHTML = '<div class="swiper-slide">Slide append' + ++appendNumber + '</div>';
+				const slideHTML = `
+  				<div class="swiper-slide">
+  					<div class="card">
+  						<div class="card-visual">
+  							<video class="card-visual__video" muted preload="auto" playsinline>
+  								<source class="stream-url" src="https://edge-hls.doppiocdn.com/hls/102844835/master/102844835_480p.m3u8"
+  									type="video/m3u8">
+  							</video>
+  							<div class="card-buttons">
+  								<button class="avatar add-popup" type="button">
+  									<picture><source srcset="./img/avatar.webp" type="image/webp"><img src="./img/avatar.png" alt=""></picture>
+  									<i class="default-logo icon-man"></i>
+  									<span class="status">Live</span>
+  								</button>
+  								<button class="card-button main-like-btn" type="button">
+  									<i class="icon icon-like"></i>
+  									<span class="text">1.2M</span>
+  								</button>
+  								<button class="sound-button" type="button">
+  									<i class="icon icon-sound-off"></i>
+  								</button>
+  							</div>
+  							<div class="card-info">
+  								<div class="chat-link">
+  									<div class="chat-link__line"></div>
+  									<div class="chat-link__text">
+  										<span>Tap to chat</span>
+  										<i class="icon icon-comment"></i>
+  									</div>
+  									<div class="chat-link__line"></div>
+  								</div>
+  								<div class="card-info__name">
+  									<i class="icon-verify"></i>
+  									<span class="mark">@BelindaWhite </span>
+  									<span class="text">‘19</span>
+  									<button class="button main-following-button" data-follow-text="Follow"
+  										data-following-text="Following">Follow</button>
+  								</div>
+  							</div>
+  						</div>
+  					</div>
+  				</div>
+				`;
+				const newSlide = swiper.$wrapperEl.append(slideHTML)[0];
+				swiper.removeSlide(0);
+				swiper.removeSlide(3);
+				swiper.update();
+			});
+
+			// Slide up
+			swiper.on('slidePrevTransitionEnd', function (e) {
+
+				// swiper.removeSlide(1);
+				// const slideHTML = '<div class="swiper-slide">Slide prepend' + ++prependNumber + '</div>';
+				const slideHTML = `
+					<div class="swiper-slide">
+						<div class="card">
+							<div class="card-visual">
+								<video class="card-visual__video" muted preload="auto" playsinline>
+									<source class="stream-url" src="https://edge-hls.doppiocdn.com/hls/102844835/master/102844835_480p.m3u8"
+										type="video/m3u8">
+								</video>
+								<div class="card-buttons">
+									<button class="avatar add-popup" type="button">
+										<picture><source srcset="./img/avatar.webp" type="image/webp"><img src="./img/avatar.png" alt=""></picture>
+										<i class="default-logo icon-man"></i>
+										<span class="status">Live</span>
+									</button>
+									<button class="card-button main-like-btn" type="button">
+										<i class="icon icon-like"></i>
+										<span class="text">1.2M</span>
+									</button>
+									<button class="sound-button" type="button">
+										<i class="icon icon-sound-off"></i>
+									</button>
+								</div>
+								<div class="card-info">
+									<div class="chat-link">
+										<div class="chat-link__line"></div>
+										<div class="chat-link__text">
+											<span>Tap to chat</span>
+											<i class="icon icon-comment"></i>
+										</div>
+										<div class="chat-link__line"></div>
+									</div>
+									<div class="card-info__name">
+										<i class="icon-verify"></i>
+										<span class="mark">@BelindaWhite </span>
+										<span class="text">‘19</span>
+										<button class="button main-following-button" data-follow-text="Follow"
+											data-following-text="Following">Follow</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				`;
+				const newSlide = swiper.$wrapperEl.prepend(slideHTML)[0];
+				swiper.slideTo(1, 0, false);
+				swiper.removeSlide(2);
+				swiper.removeSlide(3);
+				swiper.update();
+			});
+
+			clickOnSoundBtn();
+
+			swiper.on('slideChangeTransitionStart', function (e) {
+				hideSwipeMessageAfterSlide();
+				changeSound();
+				clickOnSoundBtn();
+			});
+
+			swiper.on('slideChangeTransitionEnd', function (e) {
+				pauseAllVideos();
+				setTimeout(playVideoOnActiveSlide, 100);
+			});
+
+		}
+
+		function checkInnerHeight() {
+			const appHeight = () => {
+				const doc = document.documentElement
+				doc.style.setProperty('--app-height', `${window.innerHeight}px`)
+			}
+			window.addEventListener('resize', appHeight)
+			appHeight();
+		}
+
+		function pauseAllVideos() {
+			const allVideos = document.querySelectorAll('.card-visual__video');
+
+			allVideos.forEach((video) => {
+				if (Hls.isSupported()) {
+					let hls = new Hls();
+
+					hls.loadSource('https://edge-hls.doppiocdn.org/hls/23938902/master/23938902.m3u8');
+					hls.attachMedia(video);
+
+					hls.on(Hls.Events.MANIFEST_PARSED, function () {
+						video.pause();
+					});
+				} else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+					video.src = 'https://edge-hls.doppiocdn.org/hls/23938902/master/23938902.m3u8';
+
+					video.addEventListener('canplay', function () {
+						video.pause();
+					});
+				}
+			});
+		}
+
+		function playVideoOnActiveSlide() {
+			const activeSlide = document.querySelector('.swiper-slide.swiper-slide-visible');
+			const videoTag = activeSlide.querySelector('.card-visual__video');
+
+			if (Hls.isSupported()) {
+				let hls = new Hls();
+
+				hls.loadSource('https://edge-hls.doppiocdn.org/hls/23938902/master/23938902.m3u8');
+				hls.attachMedia(videoTag);
+
+				hls.on(Hls.Events.MANIFEST_PARSED, function () {
+					videoTag.play();
+				});
+			} else if (videoTag.canPlayType('application/vnd.apple.mpegurl')) {
+				videoTag.src = 'https://edge-hls.doppiocdn.org/hls/23938902/master/23938902.m3u8';
+
+				videoTag.addEventListener('canplay', function () {
+					videoTag.play();
+				});
+			}
+		}
+
+		function hideSwipeMessageAutomatic() {
+			const swipeMessage = document.querySelector('.swipe-message');
+
+			setTimeout(hide, 3000);
+
+			function hide() {
+				swipeMessage.classList.add('hide');
+			}
+		}
+
+		function hideSwipeMessageAfterSlide() {
+			const swipeMessage = document.querySelector('.swipe-message');
+			swipeMessage.classList.add('hide');
+		}
+
+		function changeSound() {
+
+			const swiperSlideActive = document.querySelector('.swiper-slide.swiper-slide-visible');
+			const videoTagActive = swiperSlideActive.querySelector('.card-visual__video');
+			const soundButton = swiperSlideActive.querySelector('.sound-button');
+
+			const soundButtonIcon = soundButton.querySelector('.icon');
+
+			if (booleanSoundCheck) {
+				videoTagActive.muted = false;
+				videoTagActive.removeAttribute('muted');
+
+				soundButtonIcon.classList.add('icon-sound-on');
+				soundButtonIcon.classList.remove('icon-sound-off');
+			} else {
+				videoTagActive.muted = true;
+				videoTagActive.setAttribute('muted', '');
+
+				soundButtonIcon.classList.remove('icon-sound-on');
+				soundButtonIcon.classList.add('icon-sound-off');
+			}
+		}
+
+		function clickOnSoundBtn() {
+
+			const swiperSlideActive = document.querySelector('.swiper-slide.swiper-slide-visible');
+			const soundButton = swiperSlideActive.querySelector('.sound-button');
+
+			soundButton.addEventListener('click', () => {
+				booleanSoundCheck = !booleanSoundCheck;
+				changeSound();
+			});
+		}
+
+		function tooglePopup() {
+			const popup = document.querySelector('.popup');
+			if (!popup) return;
+			const closePopup = popup.querySelector('.close-button');
+			if (!closePopup) return;
+
+			closePopup.addEventListener('click', () => {
+				popup.classList.remove('show-popup');
+			});
+		}
+
+		function followingToModel() {
+			const followingButton = document.querySelectorAll('.main-following-button');
+			followingButton.forEach((followBtn) => {
+				followBtn.addEventListener('click', () => {
+					followBtn.classList.toggle('active');
+					if (followBtn.classList.contains('active')) {
+						followBtn.innerHTML = followBtn.dataset.followingText;
+					} else {
+						followBtn.innerHTML = followBtn.dataset.followText;
+					}
+				});
+			});
+		}
+
+		function toggleMoreButton() {
+			const moreButton = document.querySelector('.more-button');
+			if (!moreButton) return;
+			const aboutBody = document.querySelector('.about-body');
+
+			moreButton.addEventListener('click', () => {
+				aboutBody.classList.toggle('more-content');
+				if (aboutBody.classList.contains('more-content')) {
+					aboutBody.style.maxHeight = aboutBody.scrollHeight + 'px';
+					moreButton.innerHTML = moreButton.getAttribute('data-less');
+				} else {
+					aboutBody.style.maxHeight = '';
+					moreButton.innerHTML = moreButton.getAttribute('data-more');
+				}
+			});
+		}
+	</script> -->
+</body>
+
+</html>
